@@ -5,7 +5,9 @@
     "main": "dist/server.js",
     "scripts": {
         "start": "ts-node src/server.ts",
-        "build": "tsc"
+        "build": "tsc",
+        "build:public-openapi": "ts-node scripts/generate-public-openapi.ts",
+        "build:public-docs": "npm run build:public-openapi && npx @redocly/cli build-docs openapi.json --output docs/index.html"
     },
     "dependencies": {
         "express": "^5.1.0",
@@ -13,6 +15,7 @@
         "swagger-ui-express": "^5.0.1"
     },
     "devDependencies": {
+        "@redocly/cli": "^2.8.0",
         "@types/express": "^5.0.2",
         "@types/node": "^22.15.24",
         "@types/swagger-jsdoc": "^6.0.4",
